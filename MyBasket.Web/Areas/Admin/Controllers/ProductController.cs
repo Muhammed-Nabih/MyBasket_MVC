@@ -13,8 +13,8 @@ namespace MyBasket.Web.Areas.Admin.Controllers
     [Area("Admin")]
     public class ProductController : Controller
     {
-        private IUnitOfWork _unitOfWork;
-        private IWebHostEnvironment _webHostEnvironment;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IWebHostEnvironment _webHostEnvironment;
         public ProductController(IUnitOfWork unitOfWork , IWebHostEnvironment webHostEnvironment)
         {
             _unitOfWork = unitOfWork;

@@ -11,7 +11,7 @@ namespace MyBasket.Web.Areas.Admin.Controllers
     [Area("Admin")]
     public class CategoryController : Controller
     {
-        private IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
         public CategoryController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
