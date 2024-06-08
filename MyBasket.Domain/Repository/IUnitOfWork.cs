@@ -10,6 +10,7 @@ namespace MyBasket.Domain.Repository
     {
         ICategoryRepository Category { get; }
         IProductRepsitory Product { get; }
+        IShoppingCartRepository ShoppingCart { get; }
         int Complete();
     }
 }
