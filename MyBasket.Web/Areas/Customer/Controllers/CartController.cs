@@ -17,6 +17,7 @@ namespace MyBasket.Web.Areas.Customer.Controllers
         {
            _unitOfWork = unitOfWork;
         }
+       
         public IActionResult Index()
         {
             var claimsIdentity = (ClaimsIdentity)User.Identity;
@@ -24,7 +25,8 @@ namespace MyBasket.Web.Areas.Customer.Controllers
 
             ShoppingCartVM = new ShoppingCartVM()
             {
-                CartList = _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == claim.Value, Includeword:"Product")
+                CartList = _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == claim.Value, Includeword:"Product"),
+
             };
 
             foreach(var item in ShoppingCartVM.CartList)
@@ -35,7 +37,26 @@ namespace MyBasket.Web.Areas.Customer.Controllers
             return View(ShoppingCartVM);
         }
 
-        public IActionResult Plus(int cartid)
+        [HttpGet]
+		public IActionResult Summary()
+		{
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+
+            ShoppingCartVM = new ShoppingCartVM()
+            {
+                CartList = _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == claim.Value, Includeword: "Product"),
+            };
+
+            foreach (var item in ShoppingCartVM.CartList)
+            {
+                ShoppingCartVM.TotalCarts += (item.Count * item.Product.Price);
+            }
+
+            return View(ShoppingCartVM);
+		}
+
+		public IActionResult Plus(int cartid)
         {
             var shoppingcart = _unitOfWork.ShoppingCart.GetFirstorDefault(x=>x.Id == cartid);
             _unitOfWork.ShoppingCart.IncreaseCount(shoppingcart, 1);

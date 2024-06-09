@@ -14,6 +14,9 @@ namespace MyBasket.Infrastructure.Implementation
         public ICategoryRepository Category { get; private set; }
         public IProductRepsitory Product { get; private set; }
         public IShoppingCartRepository ShoppingCart { get; private set; }
+        public IOrderHeaderRepository OrderHeader { get; private set; }
+        public IOrderDetailRepository OrderDetail { get; private set; }
+        public IApplicationUserRepository ApplicationUser { get; private set; }
 
         public UnitOfWork(ApplicationDbContext context) 
         {
@@ -21,6 +24,9 @@ namespace MyBasket.Infrastructure.Implementation
             Category = new CategoryRepository(context);
             Product = new ProductRepsitory(context);
             ShoppingCart = new ShoppingCartRepository(context);
+			OrderHeader = new OrderHeaderRepository(context);
+			OrderDetail = new OrderDetailRepository(context);
+            ApplicationUser = new ApplicationUserRepository(context);
         }
 
         public int Complete()

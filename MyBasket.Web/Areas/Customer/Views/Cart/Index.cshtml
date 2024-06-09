@@ -6,10 +6,11 @@
 	<title>Shopping Cart</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" ">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-	<link rel="stylesheet" href="~/shoppingcart/style.css">
-</head>
+    <link rel="stylesheet" href="~/shoppingcart/style.css">
+@*     <link href="~/css/summary.css" rel="stylesheet" />
+ *@</head>
 <body>
 	<main class="page">
 		<section class="shopping-cart dark">
@@ -71,7 +72,7 @@
 								<div class="summary-item"><span class="text">Discount</span><span class="price">$0</span></div>
 								<div class="summary-item"><span class="text">Shipping</span><span class="price">$0</span></div>
 								<div class="summary-item"><span class="text">Total</span><span class="price">$@Model.TotalCarts.ToString()</span></div>
-								<button type="button" class="btn btn-primary btn-lg btn-block">Checkout</button>
+								<a href="/Customer/Cart/summary"><button type="button" class="btn btn-primary btn-lg btn-block"> Checkout</button></a>
 							</div>
 						</div>
 					</div>
