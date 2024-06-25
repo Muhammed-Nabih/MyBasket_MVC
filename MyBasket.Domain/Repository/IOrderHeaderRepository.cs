@@ -9,7 +9,7 @@ namespace MyBasket.Domain.Repository
 {
 	public interface IOrderHeaderRepository : IGenericRepository<OrderHeader>
 	{
-		void Update(OrderHeader orderHeader);
-		void UpdateOrderStatus(int id, string OrderStatus, string PaymentStatus);
-	}
+        void Update(OrderHeader orderHeader);
+        void UpdateStatus(int id, string? OrderStatus, string? PaymentStatus);
+    }
 }

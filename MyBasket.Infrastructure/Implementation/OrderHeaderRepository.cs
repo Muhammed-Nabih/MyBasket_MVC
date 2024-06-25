@@ -18,22 +18,23 @@ namespace MyBasket.Infrastructure.Implementation
 			_context = context;
 		}
 
-		public void Update(OrderHeader orderHeader)
-		{
-			_context.OrderHeaders.Update(orderHeader);
-		}
+        public void Update(OrderHeader orderHeader)
+        {
+            _context.OrderHeaders.Update(orderHeader);
+        }
 
-		public void UpdateOrderStatus(int id, string OrderStatus, string PaymentStatus)
-		{
-			var orderfromDB = _context.OrderHeaders.FirstOrDefault(x => x.Id == id);
-			if (orderfromDB != null)
-			{
-				orderfromDB.OrderStatus = OrderStatus;
-				if (PaymentStatus != null)
-				{
-					orderfromDB.PaymentStatus = PaymentStatus;
-				}
-			}
-		}
-	}
+        public void UpdateStatus(int id, string? OrderStatus, string? PaymentStatus)
+        {
+            var OrderFromDb = _context.OrderHeaders.SingleOrDefault(x => x.Id == id);
+            if (OrderFromDb != null)
+            {
+                OrderFromDb.OrderStatus = OrderStatus;
+                OrderFromDb.PaymentDate = DateTime.Now;
+                if (PaymentStatus != null)
+                {
+                    OrderFromDb.PaymentStatus = PaymentStatus;
+                }
+            }
+        }
+    }
 }

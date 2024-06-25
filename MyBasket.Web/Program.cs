@@ -5,6 +5,7 @@ using MyBasket.Infrastructure.Implementation;
 using Microsoft.AspNetCore.Identity;
 using MyBasket.Utilities;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Stripe;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,15 +16,22 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
-builder.Services.AddIdentity<IdentityUser,IdentityRole>().AddDefaultTokenProviders()
-    .AddDefaultUI()
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.Configure<StripeData>(builder.Configuration.GetSection("stripe"));
+
+
+builder.Services.AddIdentity<IdentityUser, IdentityRole>(
+	options => options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromDays(4)
+	).AddDefaultTokenProviders().AddDefaultUI()
+	.AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
 builder.Services.AddSingleton<IEmailSender,EmailSender>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession();
 
 var app = builder.Build();
 
@@ -39,6 +47,9 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+StripeConfiguration.ApiKey = builder.Configuration.GetSection("stripe:Secretkey").Get<string>();
+app.UseAuthentication();
 
 app.UseAuthorization();
 app.MapRazorPages();

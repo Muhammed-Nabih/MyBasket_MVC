@@ -13,7 +13,6 @@ namespace MyBasket.Domain.ViewModels
     {
         public Product Product { get; set; }
         [ValidateNever]
-
         public IEnumerable<SelectListItem> CategoryList { get; set; }
     }
 }
