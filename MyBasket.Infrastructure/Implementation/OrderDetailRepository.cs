@@ -11,16 +11,15 @@ namespace MyBasket.Infrastructure.Implementation
 {
 	public class OrderDetailRepository : GenericRepository<OrderDetail>, IOrderDetailRepository
 	{
-		private readonly ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
+        public OrderDetailRepository(ApplicationDbContext context) : base(context)
+        {
+            _context = context;
+        }
 
-		public OrderDetailRepository(ApplicationDbContext context) : base(context)
-		{
-			_context = context;
-		}
-
-		public void Update(OrderDetail orderDetail)
-		{
-			_context.OrderDetails.Update(orderDetail);
-		}
-	}
+        public void Update(OrderDetail Orderdetail)
+        {
+            _context.OrderDetails.Update(Orderdetail);
+        }
+    }
 }

@@ -11,6 +11,7 @@ namespace MyBasket.Domain.Repository
     {
 
         IEnumerable<T> GetAll(Expression<Func<T, bool>>? perdicate = null, string? Includeword = null);
+
         T GetFirstorDefault(Expression<Func<T, bool>>? perdicate = null, string? Includeword = null);
 
         void Add(T entity);

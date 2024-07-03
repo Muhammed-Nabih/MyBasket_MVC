@@ -11,11 +11,10 @@ using System.Threading.Tasks;
 
 namespace MyBasket.Infrastructure.Implementation
 {
-    public class ProductRepsitory : GenericRepository<Product>, IProductRepsitory
+    public class ProductRepository : GenericRepository<Product>, IProductRepository
     {
         private readonly ApplicationDbContext _context;
-
-        public ProductRepsitory(ApplicationDbContext context) : base (context) 
+        public ProductRepository(ApplicationDbContext context) : base(context)
         {
             _context = context;
         }
@@ -27,12 +26,11 @@ namespace MyBasket.Infrastructure.Implementation
             {
                 ProductInDb.Name = product.Name;
                 ProductInDb.Description = product.Description;
-                ProductInDb.Img = product.Img;
                 ProductInDb.Price = product.Price;
+                ProductInDb.Img = product.Img;
                 ProductInDb.CategoryId = product.CategoryId;
 
             }
-         
         }
     }
 }

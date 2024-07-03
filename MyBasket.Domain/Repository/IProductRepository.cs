@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyBasket.Domain.Repository
 {
-    public interface IProductRepsitory : IGenericRepository<Product>
+    public interface IProductRepository : IGenericRepository<Product>
     {
         void Update(Product product);
     }

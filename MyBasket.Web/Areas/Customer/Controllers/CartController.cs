@@ -108,7 +108,7 @@ namespace MyBasket.Web.Areas.Customer.Controllers
                 _unitOfWork.Complete();
             }
 
-            var domain = "https://localhost:7020/";
+            var domain = "https://localhost:7223/";
             var options = new SessionCreateOptions
             {
                 LineItems = new List<SessionLineItemOptions>(),

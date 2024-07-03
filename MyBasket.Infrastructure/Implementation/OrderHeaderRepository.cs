@@ -11,12 +11,11 @@ namespace MyBasket.Infrastructure.Implementation
 {
 	public class OrderHeaderRepository : GenericRepository<OrderHeader>, IOrderHeaderRepository
 	{
-		private readonly ApplicationDbContext _context;
-
-		public OrderHeaderRepository(ApplicationDbContext context) : base(context)
-		{
-			_context = context;
-		}
+        private readonly ApplicationDbContext _context;
+        public OrderHeaderRepository(ApplicationDbContext context) : base(context)
+        {
+            _context = context;
+        }
 
         public void Update(OrderHeader orderHeader)
         {

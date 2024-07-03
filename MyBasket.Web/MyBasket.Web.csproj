@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Areas\Customer\Views\Cart\OrderConfirmation.cshtml" />
     <Content Remove="Views\Shared\_Customer.cshtml" />
   </ItemGroup>
 
@@ -38,12 +39,23 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\Images\Products\" />
+    <None Include="Areas\Customer\Views\Cart\OrderConfirmation.cshtml" />
+    <None Include="Views\Shared\_Customer.cshtml" />
+    <None Include="wwwroot\customer\js\scripts.js" />
+    <None Include="wwwroot\plugins\jquery-ui\jquery-ui.js" />
+    <None Include="wwwroot\plugins\jquery-ui\jquery-ui.min.js" />
+    <None Include="wwwroot\plugins\sweetalert2\sweetalert2.all.js" />
+    <None Include="wwwroot\plugins\sweetalert2\sweetalert2.all.min.js" />
+    <None Include="wwwroot\plugins\sweetalert2\sweetalert2.js" />
+    <None Include="wwwroot\plugins\sweetalert2\sweetalert2.min.js" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Views\Shared\_Customer.cshtml" />
-    <None Include="wwwroot\customer\js\scripts.js" />
+    <UpToDateCheckInput Remove="Areas\Customer\Views\Cart\OrderConfirmation.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Areas\Customer\Views\Cart\OrderConfirmation.cshtml" />
   </ItemGroup>
 
 </Project>

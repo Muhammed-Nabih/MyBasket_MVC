@@ -18,8 +18,9 @@ namespace MyBasket.Infrastructure.Implementation
         public GenericRepository(ApplicationDbContext context)
         {
             _context = context;
-            _dbSet = context.Set<T>();
+            _dbSet = _context.Set<T>();
         }
+
         public void Add(T entity)
         {
             _dbSet.Add(entity);
@@ -28,13 +29,13 @@ namespace MyBasket.Infrastructure.Implementation
         public IEnumerable<T> GetAll(Expression<Func<T, bool>>? perdicate = null, string? Includeword = null)
         {
             IQueryable<T> query = _dbSet;
-            if(perdicate != null)
+            if (perdicate != null)
             {
                 query = query.Where(perdicate);
             }
-            if(Includeword != null)
+            if (Includeword != null)
             {
-                foreach(var item in Includeword.Split(new char[] {','}, StringSplitOptions.RemoveEmptyEntries))
+                foreach (var item in Includeword.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
                 {
                     query = query.Include(item);
                 }
