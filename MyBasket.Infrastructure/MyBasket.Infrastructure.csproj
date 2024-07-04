@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MyBasket.Domain\MyBasket.Domain.csproj" />
+    <ProjectReference Include="..\MyBasket.Utilities\MyBasket.Utilities.csproj" />
   </ItemGroup>
 
 </Project>
