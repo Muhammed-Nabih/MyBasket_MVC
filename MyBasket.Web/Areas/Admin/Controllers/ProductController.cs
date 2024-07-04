@@ -149,7 +149,6 @@ namespace MyBasket.Web.Areas.Admin.Controllers
             _unitOfWork.Complete();
             return Json(new { success = true, message = "file has been Deleted" });
         }
-
     }
-    
+
 }

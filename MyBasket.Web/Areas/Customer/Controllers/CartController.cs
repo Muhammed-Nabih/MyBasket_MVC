@@ -114,8 +114,8 @@ namespace MyBasket.Web.Areas.Customer.Controllers
                 LineItems = new List<SessionLineItemOptions>(),
 
                 Mode = "payment",
-                SuccessUrl = domain + $"customer/cart/orderconfirmation?id={ShoppingCartVM.OrderHeader.Id}",
-                CancelUrl = domain + $"customer/cart/index",
+                SuccessUrl = domain + $"Customer/Cart/OrderConfirmation?id={ShoppingCartVM.OrderHeader.Id}",
+                CancelUrl = domain + $"Customer/Cart/Index",
             };
 
             foreach (var item in ShoppingCartVM.CartsList)

@@ -34,7 +34,8 @@
                                 <div class="form-group">
                                     <label>City</label>
                                     <div class="d-flex jusify-content-start align-items-center rounded p-2">
-                                        <input asp-for="OrderHeader.City" type="text" >
+                                        <input asp-for="OrderHeader.City" type="text">
+                                        <span class="fas fa-check text-success pr-2"></span>
                                         <span asp-validation-for="OrderHeader.City"></span>
                                     </div>
                                 </div>
@@ -44,6 +45,7 @@
                                     <label>Phone Number</label>
                                     <div class="d-flex jusify-content-start align-items-center rounded p-2">
                                         <input asp-for="OrderHeader.PhoneNumber" type="text">
+                                        <span class="fas fa-check text-success pr-2"></span>
                                         <span asp-validation-for="OrderHeader.PhoneNumber"></span>
                                     </div>
                                 </div>
@@ -55,6 +57,7 @@
                                     <label>Address</label>
                                     <div class="d-flex jusify-content-start align-items-center rounded p-2">
                                         <input type="text" asp-for="OrderHeader.Address" />
+                                        <span class="fas fa-check text-success pr-2"></span>
                                         <span asp-validation-for="OrderHeader.Address"></span>
                                     </div>
                                 </div>

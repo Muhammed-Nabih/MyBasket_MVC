@@ -9,6 +9,8 @@ using Stripe;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
                                 ?? throw new InvalidOperationException("No connection string was found");
@@ -24,8 +26,6 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(
 	).AddDefaultTokenProviders().AddDefaultUI()
 	.AddEntityFrameworkStores<ApplicationDbContext>();
 
-builder.Services.AddControllersWithViews();
-builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
 builder.Services.AddSingleton<IEmailSender,EmailSender>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -49,9 +49,13 @@ app.UseStaticFiles();
 app.UseRouting();
 
 StripeConfiguration.ApiKey = builder.Configuration.GetSection("stripe:Secretkey").Get<string>();
+
 app.UseAuthentication();
 
 app.UseAuthorization();
+
+app.UseSession();
+
 app.MapRazorPages();
 
 app.MapControllerRoute(

@@ -3,11 +3,8 @@
 @{
     ViewBag.PageTitle = "Category Management";
     ViewBag.CardTitle = "Create Category";
-
 }
 
-
-<hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create" method="post">
@@ -17,18 +14,14 @@
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-
             <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
+                <textarea id="mytextarea" asp-for="Description" class="form-control"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
-
             </div>
-
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
-
         </form>
     </div>
 </div>
@@ -37,10 +30,14 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-
-@section Scripts{
+@section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
-}
 
+    <script>
+        tinymce.init({
+            selector: '#mytextarea'
+        });
+    </script>
+}

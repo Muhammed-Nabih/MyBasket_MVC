@@ -104,7 +104,5 @@ namespace MyBasket.Web.Areas.Admin.Controllers
             TempData["Delete"] = "Item has Deleted Successfully";
             return RedirectToAction("Index");
         }
-
-
     }
 }
